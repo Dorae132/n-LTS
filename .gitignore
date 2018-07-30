@@ -1,5 +1,5 @@
-*.iml
-.idea
-.DS_Store
-target
-/dist/
+.settings/
+.project
+target/
+.classpath
+.factorypath
