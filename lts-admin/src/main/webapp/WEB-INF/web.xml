@@ -5,7 +5,7 @@
          metadata-complete="false"
          version="2.5">
 
-    <display-name>LTS Admin</display-name>
+    <!-- <display-name>LTS Admin</display-name>
 
     <welcome-file-list>
         <welcome-file>index.htm</welcome-file>
@@ -55,7 +55,7 @@
 
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+    </listener> -->
 
     <!--<servlet>-->
         <!--<servlet-name>H2Console</servlet-name>-->
