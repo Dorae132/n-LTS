@@ -19,6 +19,7 @@ import java.util.List;
  * @author Robert HG (254963746@qq.com) on 8/21/15.
  */
 @RestController
+@RequestMapping("/api/*")
 public class MonitorApi extends AbstractMVC {
 
     @Autowired

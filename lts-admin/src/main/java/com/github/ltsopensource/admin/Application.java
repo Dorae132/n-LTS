@@ -1,22 +1,35 @@
 package com.github.ltsopensource.admin;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.velocity.VelocityAutoConfiguration;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.boot.context.embedded.ServletListenerRegistrationBean;
+import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.web.servlet.DispatcherServlet;
 
 import com.github.ltsopensource.admin.support.SystemInitListener;
 import com.github.ltsopensource.admin.web.filter.LoginAuthFilter;
 
 @SpringBootApplication
 @ImportResource({"classpath:spring-core.xml", "classpath:spring-web.xml"})
+@EnableAutoConfiguration(exclude = {VelocityAutoConfiguration.class})
 public class Application extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+	}
+	
+	/**servlet**/
+//	@Bean
+	public ServletRegistrationBean dispatcherRegistration(DispatcherServlet dispatcherServlet) {
+		ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(dispatcherServlet);
+		servletRegistrationBean.addInitParameter("contextConfigLocation", "classpath:spring-web.xml");
+		return servletRegistrationBean;
 	}
 	
 	/***filter***/

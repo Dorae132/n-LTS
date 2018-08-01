@@ -21,7 +21,7 @@ import java.util.Collections;
  * @author Robert HG (254963746@qq.com) on 9/28/15.
  */
 @RestController
-@RequestMapping("/jvm")
+@RequestMapping("/api/jvm")
 public class JvmDataApi extends AbstractMVC {
 
     @Autowired

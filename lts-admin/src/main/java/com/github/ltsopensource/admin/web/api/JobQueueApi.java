@@ -39,6 +39,7 @@ import java.util.Map;
  * @author Robert HG (254963746@qq.com) on 6/6/15.
  */
 @RestController
+@RequestMapping("/api/*")
 public class JobQueueApi extends AbstractMVC {
 
     @Autowired

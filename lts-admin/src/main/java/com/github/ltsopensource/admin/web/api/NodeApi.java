@@ -14,8 +14,11 @@ import com.github.ltsopensource.core.commons.utils.CollectionUtils;
 import com.github.ltsopensource.core.domain.NodeGroupGetReq;
 import com.github.ltsopensource.queue.domain.NodeGroupPo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +27,7 @@ import java.util.List;
  * @author Robert HG (254963746@qq.com) on 5/11/15.
  */
 @RestController
-@RequestMapping("/node")
+@RequestMapping("/api/node")
 public class NodeApi extends AbstractMVC {
 
     @Autowired
@@ -53,7 +56,10 @@ public class NodeApi extends AbstractMVC {
         return response;
     }
 
-    @RequestMapping("node-group-get")
+    @Autowired
+    RequestMappingHandlerMapping requestMappingHandlerMapping;
+    
+    @RequestMapping(value = "node-group-get", method = {RequestMethod.POST, RequestMethod.GET})
     public RestfulResponse getNodeGroup(NodeGroupGetReq nodeGroupGetReq) {
         RestfulResponse response = new RestfulResponse();
         PaginationRsp<NodeGroupPo> paginationRsp = appContext.getNodeGroupStore().getNodeGroup(nodeGroupGetReq);
@@ -64,7 +70,7 @@ public class NodeApi extends AbstractMVC {
         return response;
     }
 
-    @RequestMapping("node-group-add")
+    @RequestMapping(value = "node-group-add", method = {RequestMethod.POST})
     public RestfulResponse addNodeGroup(NodeGroupRequest request) {
         RestfulResponse response = new RestfulResponse();
         appContext.getNodeGroupStore().addNodeGroup(request.getNodeType(), request.getNodeGroup());

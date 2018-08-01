@@ -29,6 +29,7 @@ import java.util.Date;
  * @author Robert HG (254963746@qq.com) on 3/26/16.
  */
 @RestController
+@RequestMapping("/api/*")
 public class CronJobQueueApi extends AbstractMVC {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CronJobQueueApi.class);
