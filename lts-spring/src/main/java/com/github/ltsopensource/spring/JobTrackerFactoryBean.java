@@ -36,7 +36,7 @@ public class JobTrackerFactoryBean implements FactoryBean<JobTracker>,
      */
     private MasterChangeListener[] masterChangeListeners;
     /**
-     * 额外参数配置
+     * 额外参数配置，目前好像只有db相关的配置，为何这么做？
      */
     private Properties configs = new Properties();
     /**
@@ -46,12 +46,19 @@ public class JobTrackerFactoryBean implements FactoryBean<JobTracker>,
 
     private String identity;
 
+    /**
+     * 绑定本地ip
+     */
     private String bindIp;
+    
     /**
      * 老数据处理接口
      */
     private OldDataHandler oldDataHandler;
 
+    /**
+     * 优先取配置文件，但是这里也没有默认值，有缺陷
+     */
     private String[] locations;
 
     @Override
