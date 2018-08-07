@@ -11,12 +11,22 @@ public class JobQueueUtils {
     /**
      * 在数据库中就是表名, taskTrackerNodeGroup 是 TaskTracker的 nodeGroup
      */
+    /**
+     * 这里会针对nodegroup生成executeableJobQueue
+     * @param taskTrackerNodeGroup
+     * @return
+     */
     public static String getExecutableQueueName(String taskTrackerNodeGroup) {
         return "lts_wjq_".concat(taskTrackerNodeGroup);
     }
 
     /**
      * 在数据库中就是表名, jobClientNodeGroup 是 JobClient 的 nodeGroup
+     */
+    /**
+     * 这里会根据nodeGroup生成jobFeedbackQueue
+     * @param jobClientNodeGroup
+     * @return
      */
     public static String getFeedbackQueueName(String jobClientNodeGroup) {
         return "lts_fjq_".concat(jobClientNodeGroup);
